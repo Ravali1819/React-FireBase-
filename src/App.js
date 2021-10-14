@@ -1,24 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment, useState, useCallback } from "react";
+import { Switch, Route, Redirect } from "react-router";
+import "./App.css";
+import AddData from "./components/AddData";
+import MainPage from "./components/MainPage";
+import Navigation from "./components/Navigation";
+import Auth from "./components/Auth";
+import AuthContext from "./context/auth-context";
+import AllData from "./components/AllData";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const login = useCallback(() => {
+    setIsLoggedIn(true);
+  }, []);
+
+  const logout = useCallback(() => {
+    setIsLoggedIn(false);
+  }, []);
+
+  let routes;
+
+  if (isLoggedIn) {
+    routes = (
+      <Switch>
+        <Route path="/add-data">
+          <AddData />
+        </Route>
+        <Route path="/get-data">
+          <MainPage />
+        </Route>
+        <Route path="/update-data/:updateId">
+          <MainPage />
+        </Route>
+        <Redirect to="/get-data">
+          <MainPage />
+        </Redirect>
+      </Switch>
+    );
+  } else {
+    routes = (
+      <Switch>
+        <Route path="/" exact>
+          <Auth />
+        </Route>
+        <Route path="/all-data">
+          <AllData />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider
+      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
+    >
+      <Navigation />
+      <main>{routes}</main>
+    </AuthContext.Provider>
   );
 }
 

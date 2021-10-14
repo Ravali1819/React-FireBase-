@@ -1,38 +1,139 @@
-.App {
-  text-align: center;
+header {
+  background-color: #f7a73e;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav {
+  padding: 10px 40px;
+  color: whitesmoke;
+  font-size: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav ul {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+.addData_form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5%;
+  padding: 20px 40px;
+  width: 30%;
+}
+
+.addData_form div {
+  margin: 20px;
+}
+
+.addData_form div label input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+.main_cards {
+  padding: 20px;
+  margin: 20px;
+  background-color: rgb(37, 36, 36);
+  border-radius: 5%;
+  width: 20%;
+}
+
+.main_cards div h1 {
+  color: darkgoldenrod;
+}
+
+.main_cards div h3 {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.all_cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttons {
+  background-color: #f7a73e;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  margin-left: 0px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit_form {
+  text-align: center;
+  border-bottom: 3px solid black;
+}
+
+.edit_form div {
+  margin: 20px;
+}
+
+.edit_form div label input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+.invalid {
+  border: 1px solid red !important;
+}
+
+.overlay {
+  background-color: rgb(134, 133, 133);
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  opacity: 1;
+}
+
+.modal {
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50vh;
+  z-index: 1000;
+  opacity: 1;
+  text-align: center;
+}
+
+.nav_links {
+  text-decoration: none;
+  color: white;
+}
+
+.active {
+  background-color: lightcyan;
+  padding: 5px 10px;
+  border-radius: 5%;
+  color: black;
+}
+
+.activate {
+  cursor: pointer;
+}
+
+.disabled {
+  cursor: not-allowed;
+  background-color: coral;
 }
